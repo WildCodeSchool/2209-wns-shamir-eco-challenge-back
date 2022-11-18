@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  back:
+    build:
+      dockerfile: "Dockerfile"
+    volumes:
+      - ./:/app:rw,cached
+    ports:
+      - 5000:5000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: ecochallenge
+      PGDATA: /var/lib/postgresql/data/customDataFolder
+    volumes:
+      - ./dbData:/var/lib/postgresql/data/customDataFolder
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d carbone -U admin"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+      db:
+        condition: service_healthy

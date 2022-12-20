@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server";
 import { dataSource } from "./tools/utils";
 import { buildSchema } from "type-graphql";
-import { UserResolver } from "./resolvers/userResolver";
+import { ChallengeResolver } from "./resolvers/challengeResolver";
 // import * as dotenv from "dotenv";
 
 const port = 5000;
@@ -9,7 +9,7 @@ const port = 5000;
 const start = async (): Promise<void> => {
   await dataSource.initialize();
   const schema = await buildSchema({
-    resolvers: [UserResolver],
+    resolvers: [ChallengeResolver],
   });
   const server = new ApolloServer({ schema });
 

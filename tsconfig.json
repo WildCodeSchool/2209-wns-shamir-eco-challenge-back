@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "target": "es5",
+      "target": "ES2019",
       "lib": [
         "dom",
         "dom.iterable",
@@ -13,13 +13,13 @@
       "strict": true,
       "forceConsistentCasingInFileNames": true,
       "noFallthroughCasesInSwitch": true,
-      "module": "esnext",
+      "module": "CommonJS",
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
-      "jsx": "react-jsx",
-      "experimentalDecorators": true
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true
     },
     "include": [
       "src"

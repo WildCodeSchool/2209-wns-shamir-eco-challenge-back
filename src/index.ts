@@ -2,7 +2,7 @@ import { ApolloServer } from "apollo-server";
 import { dataSource } from "./tools/utils";
 import { buildSchema } from "type-graphql";
 import { UserResolver } from "./resolvers/userResolver";
-import * as dotenv from "dotenv";
+// import * as dotenv from "dotenv";
 
 const port = 5000;
 

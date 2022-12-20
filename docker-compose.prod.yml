@@ -1,0 +1,35 @@
+# version: "3.8"
+
+# services:
+#   back:
+#     build:
+#       dockerfile: "Dockerfile.prod"
+#     volumes:
+#       - ./:/app:rw,cached
+#       - /app/node_modules
+#     ports:
+#       - 4000:4000
+#       - 80:5000
+#     depends_on:
+#       - postgres
+
+#   postgres:
+#     image: postgres
+#     restart: always
+#     volumes:
+#       - .data/postgres:/var/lib/postgresql/data/customDataFolder
+#     environment:
+#       POSTGRES_USER: admin
+#       POSTGRES_PASSWORD: password
+#       POSTGRES_DB: ecochallenge
+#       PGDATA: /var/lib/postgresql/data/customDataFolder
+#     ports:
+#       - 5432:5432
+  
+#   adminer:
+#     image: adminer:latest
+#     restart: always
+#     ports:
+#       - 8081:8080
+#     depends_on:
+#       - postgres

@@ -4,9 +4,12 @@ services:
   back:
     build:
       dockerfile: "Dockerfile"
+      context: "."
     volumes:
       - ./:/app:rw,cached
+      - /app/node_modules
     ports:
+      - 4000:4000
       - 5000:5000
     depends_on:
       db:
@@ -17,21 +20,21 @@ services:
     restart: always
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: ecochallenge
       PGDATA: /var/lib/postgresql/data/customDataFolder
     volumes:
-      - ./dbData:/var/lib/postgresql/data/customDataFolder
+      - ./dbDdata/postgres:/var/lib/postgresql/data/customDataFolder
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d ecochallenge -U admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
       - 5432:5432
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d carbone -U admin"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
+  
   adminer:
-    image: adminer
+    image: adminer:latest
     restart: always
     ports:
       - 8081:8080

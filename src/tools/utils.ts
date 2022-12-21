@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import { Challenge } from "../models/challenge";
+import { Gesture } from "../models/gesture";
 import { User } from "../models/user";
 
 export const dataSource = new DataSource({
@@ -10,5 +11,5 @@ export const dataSource = new DataSource({
   password: "password",
   database: "ecochallenge",
   synchronize: true,
-  entities: [Challenge, User],
+  entities: [Challenge, User, Gesture],
 });

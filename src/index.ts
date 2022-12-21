@@ -2,6 +2,7 @@ import { ApolloServer } from "apollo-server";
 import { dataSource } from "./tools/utils";
 import { buildSchema, Resolver } from "type-graphql";
 import { ChallengeResolver } from "./resolvers/challengeResolver";
+import { GestureResolver } from "./resolvers/gestureResolver";
 import { UserResolver } from "./resolvers/userResolver";
 import * as dotenv from "dotenv";
 import authService from "./services/authService";
@@ -13,7 +14,10 @@ const port = 5000;
 const start = async (): Promise<void> => {
   await dataSource.initialize();
   const schema = await buildSchema({
-    resolvers: [ChallengeResolver, UserResolver],
+    resolvers: [ChallengeResolver, GestureResolver, UserResolver ],
+    validate: {
+      forbidUnknownValues: false
+      },
     authChecker: ({ context }, roles) => {
       if (context.user === undefined) {
         return false;

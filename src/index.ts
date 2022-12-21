@@ -15,6 +15,9 @@ const start = async (): Promise<void> => {
   await dataSource.initialize();
   const schema = await buildSchema({
     resolvers: [ChallengeResolver, GestureResolver, UserResolver ],
+    validate: {
+      forbidUnknownValues: false
+      },
     authChecker: ({ context }, roles) => {
       if (context.user === undefined) {
         return false;

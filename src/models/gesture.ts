@@ -1,12 +1,12 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { Field, ObjectType, ID } from "type-graphql";
+import { Field, ObjectType, Int } from "type-graphql";
 
 @ObjectType()
 @Entity()
 export class Gesture {
-    @Field(() => ID)
+    @Field(() => Int)
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Field()
     @Column()

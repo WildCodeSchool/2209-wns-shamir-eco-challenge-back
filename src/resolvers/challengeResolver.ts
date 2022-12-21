@@ -1,5 +1,4 @@
-
-import { Resolver, Query, Arg, Mutation, Authorized } from "type-graphql";
+import { Resolver, Query, Arg, Mutation } from "type-graphql";
 import { CreateChallengeInput } from "../inputs/createChallengeInput";
 import { Challenge } from "../models/challenge";
 import challengeService from "../services/challengeService";

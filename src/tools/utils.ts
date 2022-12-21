@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import { Challenge } from "../models/challenge";
+import { User } from "../models/user";
 
 export const dataSource = new DataSource({
   type: "postgres",
@@ -9,5 +10,5 @@ export const dataSource = new DataSource({
   password: "password",
   database: "ecochallenge",
   synchronize: true,
-  entities: [Challenge],
+  entities: [Challenge, User],
 });

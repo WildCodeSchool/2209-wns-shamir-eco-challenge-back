@@ -24,7 +24,7 @@ services:
       POSTGRES_DB: ecochallenge
       PGDATA: /var/lib/postgresql/data/customDataFolder
     volumes:
-      - ./dbDdata/postgres:/var/lib/postgresql/data/customDataFolder
+      - ./dbData/postgres:/var/lib/postgresql/data/customDataFolder
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d ecochallenge -U admin"]
       interval: 10s

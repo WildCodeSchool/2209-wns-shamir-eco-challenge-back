@@ -4,7 +4,7 @@ import service from "../services/challengeService";
 
 const router = express.Router();
 
-// GET /api/challenge
+// GET /api/challenges
 router.get("/", async (request: Request, response: Response) => {
   const challenges: Challenge[] = await service.getAll();
   response.send(challenges);

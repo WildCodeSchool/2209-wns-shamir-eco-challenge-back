@@ -28,8 +28,8 @@ export default {
 
   /**
    * Update an existing challenge.
-   * @param challengerRequest new challenge data
-   * @param challengerId existing challenge id
+   * @param challengeRequest new challenge data
+   * @param challengeId existing challenge id
    * @returns updated challenge
    */
   update: async (

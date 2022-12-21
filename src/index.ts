@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server";
 import { dataSource } from "./tools/utils";
-import { buildSchema, Resolver } from "type-graphql";
+import { buildSchema } from "type-graphql";
 import { ChallengeResolver } from "./resolvers/challengeResolver";
 import { GestureResolver } from "./resolvers/gestureResolver";
 import { UserResolver } from "./resolvers/userResolver";

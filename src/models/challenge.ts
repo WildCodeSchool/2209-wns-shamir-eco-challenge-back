@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Field, ObjectType, Int } from "type-graphql";
+import { Gesture } from "./gesture";
 
 @ObjectType()
 @Entity()
@@ -11,4 +12,8 @@ export class Challenge {
     @Field()
     @Column()
     name!: string;
+
+    @ManyToMany(() => Gesture, { eager: true })
+    @JoinTable()
+    gestures: Gesture[];
 }

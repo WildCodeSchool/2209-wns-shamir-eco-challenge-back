@@ -41,4 +41,15 @@ router.delete("/:id", async (request: Request, response: Response) => {
   response.sendStatus(204);
 });
 
+// POST /challenges/4/gestures/2
+router.post("/:challengeId/gestures/:gestureId", async (request: Request, response: Response) => {
+  try {
+    const challengeId: number = parseInt(request.params.id);
+    const gestureId: number = parseInt(request.params.id);
+    const challenge = await service.addGesture(challengeId, gestureId);
+    response.send(challenge);
+  } catch (e) { 
+      response.status(400).send("ERROR"); 
+  }
+});
 export default router;

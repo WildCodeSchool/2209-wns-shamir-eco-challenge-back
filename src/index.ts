@@ -14,7 +14,7 @@ const port = 5000;
 const start = async (): Promise<void> => {
   await dataSource.initialize();
   const schema = await buildSchema({
-    resolvers: [ChallengeResolver, GestureResolver, UserResolver ],
+    resolvers: [ChallengeResolver, GestureResolver, UserResolver],
     validate: {
       forbidUnknownValues: false
       },

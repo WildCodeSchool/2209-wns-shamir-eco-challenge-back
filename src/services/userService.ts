@@ -6,6 +6,14 @@ import * as argon2 from "argon2";
 const repository: Repository<User> = dataSource.getRepository(User);
 
 export default {
+    /**
+   * Retrieve all challenges from db.
+   * @returns challenges array
+   */
+    getAll: async (): Promise<User[]> => {
+      return await repository.find();
+    },
+
   /**
    * Return the user relative to the given email
    * @param email user email

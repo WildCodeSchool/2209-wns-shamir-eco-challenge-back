@@ -1,27 +1,14 @@
 import { InputType, Field } from "type-graphql";
 import { Gesture } from "../models/gesture";
-import { User } from "../models/user";
 
 @InputType()
 export class UpdateChallengeInput {
-  @Field()
-  name!: string;
+    @Field()
+    id!: number;
 
-  @Field()
-  image!: string;
+    @Field()
+    name!: string;
 
-  @Field()
-  startDate!: string;
-
-  @Field()
-  endDate!: string;
-
-  @Field()
-  challengeStatus!: string;
-
-  @Field(() => [Number], { nullable: false })
-  gestures: Gesture[];
-
-  @Field(() => [Number], { nullable: false })
-  players: User[];
+    @Field(() => [Number], { nullable: false })
+    gestures: Gesture[];
 }

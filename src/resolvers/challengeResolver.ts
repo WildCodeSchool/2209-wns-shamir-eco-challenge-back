@@ -22,12 +22,14 @@ export class ChallengeResolver {
   async updateChallenge(
     @Arg("id") id: number,
     @Arg("challenge") challenge: UpdateChallengeInput
-  ): Promise<Challenge | null> {
+      ): Promise<Challenge | null> {
     return await challengeService.update(challenge, id);
   }
 
   @Mutation(() => Challenge)
-  async deleteChallenge(@Arg("id") id: number): Promise<String> {
+  async deleteChallenge(
+    @Arg("id") id: number
+      ): Promise<String> {
     return await challengeService.delete(id);
   }
 
@@ -37,13 +39,5 @@ export class ChallengeResolver {
     @Arg("gestureId") gestureId: number
   ): Promise<Challenge> {
     return await challengeService.addGesture(challengeId, gestureId);
-  }
-
-  @Mutation(() => Challenge)
-  async addPlayer(
-    @Arg("challengeId") challengeId: number,
-    @Arg("playerId") playerId: number
-  ): Promise<Challenge> {
-    return await challengeService.addPlayer(challengeId, playerId);
   }
 }

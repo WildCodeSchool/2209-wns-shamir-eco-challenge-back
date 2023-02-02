@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { Challenge } from "../models/challenge";
+import { Challenge } from "../models/challenge"
 import service from "../services/challengeService";
 
 const router = express.Router();
@@ -27,7 +27,7 @@ router.post("/", async (request: Request, response: Response) => {
 router.put("/:id", async (request: Request, response: Response) => {
   const challengeId: number = parseInt(request.params.id);
   const challengeRequest: Challenge = request.body;
-  const challengeUpdated: Challenge | null = await service.update(
+  const challengeUpdated: Challenge| null = await service.update(
     challengeRequest,
     challengeId
   );
@@ -42,32 +42,14 @@ router.delete("/:id", async (request: Request, response: Response) => {
 });
 
 // POST /challenges/4/gestures/2
-router.post(
-  "/:challengeId/gestures/:gestureId",
-  async (request: Request, response: Response) => {
-    try {
-      const challengeId: number = parseInt(request.params.id);
-      const gestureId: number = parseInt(request.params.id);
-      const challenge = await service.addGesture(challengeId, gestureId);
-      response.send(challenge);
-    } catch (e) {
-      response.status(400).send("ERROR");
-    }
+router.post("/:challengeId/gestures/:gestureId", async (request: Request, response: Response) => {
+  try {
+    const challengeId: number = parseInt(request.params.id);
+    const gestureId: number = parseInt(request.params.id);
+    const challenge = await service.addGesture(challengeId, gestureId);
+    response.send(challenge);
+  } catch (e) { 
+      response.status(400).send("ERROR"); 
   }
-);
-
-// POST /challenges/4/players/2
-router.post(
-  "/:challengeId/players/:playerId",
-  async (request: Request, response: Response) => {
-    try {
-      const challengeId: number = parseInt(request.params.id);
-      const playerId: number = parseInt(request.params.id);
-      const challenge = await service.addPlayer(challengeId, playerId);
-      response.send(challenge);
-    } catch (e) {
-      response.status(400).send("ERROR");
-    }
-  }
-);
+});
 export default router;

@@ -2,12 +2,9 @@ import { InputType, Field } from "type-graphql";
 
 @InputType()
 export class UpdateGestureInput {
-  @Field()
-  name!: string;
+    @Field()
+    id!: number;
 
-  @Field()
-  imgUrl!: string;
-
-  @Field()
-  text!: string;
+    @Field()
+    name!: string;
 }

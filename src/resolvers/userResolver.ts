@@ -1,4 +1,5 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { UpdateUserInput } from "../inputs/updateUserInput";
 import { User } from "../models/user";
 import authService from "../services/authService";
 import userService from "../services/userService";
@@ -18,6 +19,19 @@ export class UserResolver {
     const userFromDB = await userService.create(email, password);
     console.log(userFromDB);
     return userFromDB;
+  }
+
+  @Mutation(() => User)
+  async updateUser(
+    @Arg("id") id: number,
+    @Arg("user") user: UpdateUserInput
+  ): Promise<User | null> {
+    return await userService.update(user, id);
+  }
+
+  @Mutation(() => User)
+  async deleteUser(@Arg("id") id: number): Promise<String> {
+    return await userService.delete(id);
   }
 
   @Mutation(() => String)

@@ -22,15 +22,18 @@ export class ChallengeResolver {
   async updateChallenge(
     @Arg("id") id: number,
     @Arg("challenge") challenge: UpdateChallengeInput
-      ): Promise<Challenge | null> {
+  ): Promise<Challenge | null> {
     return await challengeService.update(challenge, id);
   }
 
   @Mutation(() => Challenge)
-  async deleteChallenge(
-    @Arg("id") id: number
-      ): Promise<String> {
+  async deleteChallenge(@Arg("id") id: number): Promise<String> {
     return await challengeService.delete(id);
+  }
+
+  @Query(() => Challenge)
+  async getChallengeById(@Arg("id") id: number): Promise<String> {
+    return await challengeService.getById(id);
   }
 
   @Mutation(() => Challenge)
@@ -38,6 +41,14 @@ export class ChallengeResolver {
     @Arg("challengeId") challengeId: number,
     @Arg("gestureId") gestureId: number
   ): Promise<Challenge> {
-    return await challengeService.addGesture(challengeId, gestureId);
+    return await challengeService.addGesture(gestureId, challengeId);
+  }
+
+  @Mutation(() => Challenge)
+  async addPlayer(
+    @Arg("challengeId") challengeId: number,
+    @Arg("playerId") playerId: number
+  ): Promise<Challenge> {
+    return await challengeService.addPlayer(playerId, challengeId);
   }
 }

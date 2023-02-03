@@ -4,17 +4,31 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @ObjectType()
 @Entity()
 export class User {
-    @Field()
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @Field()
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Field()
-    @Column()
-    email!: string;
+  @Field()
+  @Column()
+  email!: string;
 
-    @Column()
-    hashedPassword!: string;
+  @Field()
+  @Column()
+  hashedPassword!: string;
 
-    @Column()
-    role!: string;
+  @Field()
+  @Column()
+  role!: string;
+
+  @Field()
+  @Column({ nullable: true })
+  name!: string;
+
+  @Field()
+  @Column()
+  image!: string;
+
+  @Field()
+  @Column()
+  color!: string;
 }

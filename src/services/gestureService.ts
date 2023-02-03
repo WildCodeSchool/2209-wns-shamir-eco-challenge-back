@@ -2,7 +2,8 @@ import { Repository } from "typeorm";
 import { Gesture } from "../models/gesture";
 import { dataSource } from "../tools/utils";
 
-const gestureRepository: Repository<Gesture> = dataSource.getRepository(Gesture);
+const gestureRepository: Repository<Gesture> =
+  dataSource.getRepository(Gesture);
 
 export default {
   /**
@@ -11,9 +12,7 @@ export default {
    */
   getAll: async (): Promise<Gesture[]> => {
     return await gestureRepository.find({
-      relations: {
-      
-      },
+      relations: {},
     });
   },
 
@@ -49,5 +48,14 @@ export default {
    */
   delete: async (gestureId: number): Promise<any> => {
     return await gestureRepository.delete(gestureId);
+  },
+
+  /**
+   * Retrieve an existing gesture from db.
+   * @param gestureId gesture id to delete
+   * @returns
+   */
+  getById: async (gestureId: number): Promise<any> => {
+    return await gestureRepository.findOneBy({ id: gestureId });
   },
 };

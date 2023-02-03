@@ -1,9 +1,8 @@
-
 import { Resolver, Query, Arg, Mutation } from "type-graphql";
 import { CreateGestureInput } from "../inputs/createGestureInput";
 import { UpdateGestureInput } from "../inputs/updateGestureInput";
 import { Gesture } from "../models/gesture";
-import gestureService from "../services/gestureService"; 
+import gestureService from "../services/gestureService";
 
 @Resolver(Gesture)
 export class GestureResolver {
@@ -23,14 +22,17 @@ export class GestureResolver {
   async updateGesture(
     @Arg("id") id: number,
     @Arg("gesture") gesture: UpdateGestureInput
-      ): Promise<Gesture | null> {
+  ): Promise<Gesture | null> {
     return await gestureService.update(gesture, id);
   }
 
   @Mutation(() => Gesture)
-  async deleteGesture(
-    @Arg("id") id: number
-      ): Promise<String> {
+  async deleteGesture(@Arg("id") id: number): Promise<String> {
     return await gestureService.delete(id);
+  }
+
+  @Query(() => Gesture)
+  async getGestureById(@Arg("id") id: number): Promise<String> {
+    return await gestureService.getById(id);
   }
 }

@@ -21,18 +21,18 @@ export class UserResolver {
     return userFromDB;
   }
 
-  @Mutation(() => User)
-  async updateUser(
-    @Arg("id") id: number,
-    @Arg("user") user: UpdateUserInput
-  ): Promise<User | null> {
-    return await userService.update(user, id);
-  }
+  // @Mutation(() => User)
+  // async updateUser(
+  //   @Arg("id") id: number,
+  //   @Arg("user") user: UpdateUserInput
+  // ): Promise<User | null> {
+  //   return await userService.update(user, id);
+  // }
 
-  @Mutation(() => User)
-  async deleteUser(@Arg("id") id: number): Promise<String> {
-    return await userService.delete(id);
-  }
+  // @Mutation(() => User)
+  // async deleteUser(@Arg("id") id: number): Promise<String> {
+  //   return await userService.delete(id);
+  // }
 
   @Mutation(() => String)
   async getToken(

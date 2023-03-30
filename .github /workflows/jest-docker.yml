@@ -4,7 +4,7 @@ on: push
 
 jobs:
   # Label of the container job
-  test:
+  tests-jest:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     container: node:16
@@ -43,7 +43,7 @@ jobs:
         env:
           JWT_SECRET_KEY: MA_SUPER_CLEF_SECRETE
   docker:
-    needs: test
+    needs: tests-jest
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:

@@ -42,7 +42,7 @@ jobs:
         env:
           JWT_SECRET_KEY: MA_SUPER_CLEF_SECRETE
   docker:
-    needs: tests-jest
+    needs: test
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:

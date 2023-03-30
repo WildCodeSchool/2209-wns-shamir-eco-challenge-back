@@ -1,7 +1,6 @@
 name: server-tests-workflow
 
-on:
-  push
+on: push
 
 jobs:
   # Label of the container job

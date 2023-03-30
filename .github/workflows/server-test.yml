@@ -1,7 +1,6 @@
 name: server-tests-workflow
 
-on:
-  push
+on: push
 
 jobs:
   # Label of the container job
@@ -31,18 +30,17 @@ jobs:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v3
-
       # Performs a clean installation of all dependencies in the `package.json` file
       # For more information, see https://docs.npmjs.com/cli/ci.html
       - name: Install dependencies
         run: npm install
-
       - name: Running tests
         # Runs a script that creates a PostgreSQL table, populates
         # the table with data, and then retrieves the data.
         run: npm run test
         env:
           JWT_SECRET_KEY: MA_SUPER_CLEF_SECRETE
+<<<<<<< HEAD:.github/workflows/server-test.yml
   docker:
     needs: tests-jest
     if: github.ref == 'refs/heads/main'
@@ -62,3 +60,24 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/project_eco_back:latest
+=======
+  # docker:
+  #   needs: tests-jest
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Set up QEMU
+  #       uses: docker/setup-qemu-action@v2
+  #     - name: Set up Docker buildx
+  #       uses: docker/setup-buildx-action@v2
+  #     - name: Login to Docker Hub
+  #       uses: docker/login-action@v2
+  #       with:
+  #         username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #         password: ${{ secrets.DOCKERHUB_TOKEN }}
+  #     - name: Build and push
+  #       uses: docker/build-push-action@v4
+  #       with:
+  #         push: true
+  #         tags: ${{ secrets.DOCKERHUB_USERNAME }}/project_eco_back:latest
+>>>>>>> a5cb2acdab6445556ae3d46c059ed1f42311b8c8:.github /workflows/server-test.yml

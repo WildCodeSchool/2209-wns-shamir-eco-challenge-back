@@ -1,4 +1,4 @@
-name: server tests workflow
+name: server-tests-workflow
 
 on: push
 

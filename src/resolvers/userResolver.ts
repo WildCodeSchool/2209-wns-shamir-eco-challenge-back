@@ -29,10 +29,10 @@ export class UserResolver {
   //   return await userService.update(user, id);
   // }
 
-  // @Mutation(() => User)
-  // async deleteUser(@Arg("id") id: number): Promise<String> {
-  //   return await userService.delete(id);
-  // }
+  @Mutation(() => User)
+  async deleteUser(@Arg("id") id: number): Promise<String> {
+    return await userService.delete(id);
+  }
 
   @Mutation(() => String)
   async getToken(

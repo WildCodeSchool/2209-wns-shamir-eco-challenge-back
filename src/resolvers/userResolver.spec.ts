@@ -1,6 +1,7 @@
 import { ApolloServer, gql } from "apollo-server";
 import createServer from "../tools/server";
 
+
 describe("User resolver", () => {
   let server: ApolloServer;
 
